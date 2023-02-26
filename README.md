@@ -1,3 +1,5 @@
+<!-- @format -->
+
 # Tutorial
 
 Welcome to the tutorial! We'll be building a small, but feature-rich app that lets you keep track of your contacts. We expect it to take between 30-60m if you're following along.
@@ -382,11 +384,11 @@ However, it's not inside of our root layout 😠
 
 ## Nested Routes
 
-We want the contact component to render *inside* of the `<Root>` layout like this.
+We want the contact component to render _inside_ of the `<Root>` layout like this.
 
 ![](https://reactrouter.com/_docs/tutorial/05.webp)
 
-We do it by making the contact route a *child* of the root route.
+We do it by making the contact route a _child_ of the root route.
 
 👉 **Move the contacts route to be a child of the root route**
 
@@ -406,7 +408,7 @@ const router = createBrowserRouter([
 ]);
 ```
 
-You'll now see the root layout again but a blank page on the right. We need to tell the root route *where* we want it to render its child routes. We do that with [`<Outlet>`](https://reactrouter.com/en/main/components/outlet).
+You'll now see the root layout again but a blank page on the right. We need to tell the root route _where_ we want it to render its child routes. We do that with [`<Outlet>`](https://reactrouter.com/en/main/components/outlet).
 
 Find the `<div id="detail">` and put an outlet inside
 
@@ -468,10 +470,10 @@ You can open the network tab in the browser devtools to see that it's not reques
 
 URL segments, layouts, and data are more often than not coupled (tripled?) together. We can see it in this app already:
 
-|URL Segment|Component|Data|
-| --- | --- | --- |
-|/|`<Root>`|list of contacts|
-|contacts/:id|`<Contact>`|individual contact|
+| URL Segment  | Component   | Data               |
+| ------------ | ----------- | ------------------ |
+| /            | `<Root>`    | list of contacts   |
+| contacts/:id | `<Contact>` | individual contact |
 
 Because of this natural coupling, React Router has data conventions to get data into your route components easily.
 
@@ -1049,13 +1051,13 @@ export default function Root() {
 }
 ```
 
-Note that we are passing a function to `className`. When the user is at the URL in the `NavLink`, then `isActive` will be true. When it's *about* to be active (the data is still loading) then `isPending` will be true. This allows us to easily indicate where the user is, as well as provide immediate feedback on links that have been clicked but we're still waiting for data to load.
+Note that we are passing a function to `className`. When the user is at the URL in the `NavLink`, then `isActive` will be true. When it's _about_ to be active (the data is still loading) then `isPending` will be true. This allows us to easily indicate where the user is, as well as provide immediate feedback on links that have been clicked but we're still waiting for data to load.
 
 ![](https://reactrouter.com/_docs/tutorial/15.webp)
 
 ## Global Pending UI
 
-As the user navigates the app, React Router will *leave the old page up* as data is loading for the next page. You may have noticed the app feels a little unresponsive as you click between the list. Let's provide the user with some feedback so the app doesn't feel unresponsive.
+As the user navigates the app, React Router will _leave the old page up_ as data is loading for the next page. You may have noticed the app feels a little unresponsive as you click between the list. Let's provide the user with some feedback so the app doesn't feel unresponsive.
 
 React Router is managing all of the state behind the scenes and reveals the pieces of it you need to build dynamic web apps. In this case, we'll use the [`useNavigation`](https://reactrouter.com/en/main/hooks/use-navigation) hook.
 
@@ -1095,7 +1097,7 @@ In our case, we add a `"loading"` class to the main part of the app if we're not
 
 ![](https://reactrouter.com/_docs/tutorial/16.webp)
 
-Note that our data model (`src/contacts.js`) has a clientside cache, so navigating to the same contact is fast the second time. This behavior is *not* React Router, it will re-load data for changing routes no matter if you've been there before or not. It does, however, avoid calling the loaders for *unchanging* routes (like the list) during a navigation.
+Note that our data model (`src/contacts.js`) has a clientside cache, so navigating to the same contact is fast the second time. This behavior is _not_ React Router, it will re-load data for changing routes no matter if you've been there before or not. It does, however, avoid calling the loaders for _unchanging_ routes (like the list) during a navigation.
 
 ## Deleting Records
 
@@ -1119,7 +1121,7 @@ If we review code in the contact route, we can find the delete button looks like
 </Form>
 ```
 
-Note the `action` points to `"destroy"`. Like `<Link to>`, `<Form action>` can take a *relative* value. Since the form is rendered in `contact/:contactId`, then a relative action with `destroy` will submit the form to `contact/:contactId/destroy` when clicked.
+Note the `action` points to `"destroy"`. Like `<Link to>`, `<Form action>` can take a _relative_ value. Since the form is rendered in `contact/:contactId`, then a relative action with `destroy` will submit the form to `contact/:contactId/destroy` when clicked.
 
 At this point you should know everything you need to know to make the delete button work. Maybe give it a shot before moving on? You'll need:
 
@@ -1393,7 +1395,7 @@ export async function loader({ request }) {
 
 ![](https://reactrouter.com/_docs/tutorial/21.webp)
 
-Because this is a GET, not a POST, React Router *does not* call the `action`. Submitting a GET form is the same as clicking a link: only the URL changes. That's why the code we added for filtering is in the `loader`, not the `action` of this route.
+Because this is a GET, not a POST, React Router _does not_ call the `action`. Submitting a GET form is the same as clicking a link: only the URL changes. That's why the code we added for filtering is in the `loader`, not the `action` of this route.
 
 This also means it's a normal page navigation. You can click the back button to get back to where you were.
 
@@ -1598,7 +1600,7 @@ Now that the form is submitted for every key stroke, if we type the characters "
 
 ![](https://reactrouter.com/_docs/tutorial/23.webp)
 
-We can avoid this by *replacing* the current entry in the history stack with the next page, instead of pushing into it.
+We can avoid this by _replacing_ the current entry in the history stack with the next page, instead of pushing into it.
 
 👉 **Use `replace` in `submit`**
 
@@ -1642,7 +1644,7 @@ Each key stroke no longer creates new entries, so the user can click back out of
 
 ## Mutations Without Navigation
 
-So far all of our mutations (the times we change data) have used forms that navigate, creating new entries in the history stack. While these user flows are common, it's equally as common to want to change data *without* causing a navigation.
+So far all of our mutations (the times we change data) have used forms that navigate, creating new entries in the history stack. While these user flows are common, it's equally as common to want to change data _without_ causing a navigation.
 
 For these cases, we have the [`useFetcher`](https://reactrouter.com/en/main/hooks/use-fetcher) hook. It allows us to communicate with loaders and actions without causing a navigation.
 
@@ -1780,7 +1782,7 @@ function Favorite({ contact }) {
 }
 ```
 
-If you click the button now you should see the star *immediately* change to the new state. Instead of always rendering the actual data, we check if the fetcher has any `formData` being submitted, if so, we'll use that instead. When the action is done, the `fetcher.formData` will no longer exist and we're back to using the actual data. So even if you write bugs in your optimistic UI code, it'll eventually go back to the correct state 🥹
+If you click the button now you should see the star _immediately_ change to the new state. Instead of always rendering the actual data, we check if the fetcher has any `formData` being submitted, if so, we'll use that instead. When the action is done, the `fetcher.formData` will no longer exist and we're back to using the actual data. So even if you write bugs in your optimistic UI code, it'll eventually go back to the correct state 🥹
 
 ## Not Found Data
 
@@ -1823,7 +1825,7 @@ We'd like it to look like this:
 
 We could add the error element to every one of the child routes but, since it's all the same error page, this isn't recommended.
 
-There's a cleaner way. Routes can be used *without* a path, which lets them participate in the UI layout without requiring new path segments in the URL. Check it out:
+There's a cleaner way. Routes can be used _without_ a path, which lets them participate in the UI layout without requiring new path segments in the URL. Check it out:
 
 👉 **Wrap the child routes in a pathless route**
 
@@ -1903,4 +1905,4 @@ const router = createBrowserRouter(
 
 That's it! Thanks for giving React Router a shot. We hope this tutorial gives you a solid start to build great user experiences. There's a lot more you can do with React Router, so make sure to check out all the APIs 😀
 
-© [Remix Software, Inc.](https://remix.run/) • [Brand](https://reactrouter.com/brand)  • Docs and examples [CC 4.0](https://creativecommons.org/licenses/by/4.0/) [Edit](https://github.com/remix-run/react-router/edit/main/docs/start/tutorial.md)
+© [Remix Software, Inc.](https://remix.run/) • [Brand](https://reactrouter.com/brand) • Docs and examples [CC 4.0](https://creativecommons.org/licenses/by/4.0/) [Edit](https://github.com/remix-run/react-router/edit/main/docs/start/tutorial.md)
